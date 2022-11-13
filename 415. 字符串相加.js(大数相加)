@@ -1,0 +1,19 @@
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var addStrings = function (num1, num2) {
+  const l = Math.max(num1.length, num2.length);
+  num1 = num1.padStart(l, "0");
+  num2 = num2.padStart(l, "0");
+
+  let [result, n] = ["", 0];
+  for (let i = l - 1; i >= 0; i--) {
+    const sum = Number(num1[i]) + Number(num2[i]) + n;
+    result = String(sum % 10) + result;
+    n = Math.floor(sum / 10);
+  }
+
+  return n === 0 ? result : String(n) + result;
+};
